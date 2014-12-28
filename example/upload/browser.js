@@ -32,13 +32,26 @@ upload(input, { type: 'text' }, function (err, results) {
     generateImage();
 });
 
+document.querySelector('#segments').addEventListener('keydown', generateImage);
+
+var generating = false, doOver = false;
 function generateImage () {
     if (!svg) return;
-    nsvg = wireframe(linearize(svg, { tolerance: slider.value }));
+    if (generating) {
+        doOver = true;
+        return;
+    }
+    generating = true;
+    nsvg = wireframe(linearize(svg, {
+        tolerance: slider.value,
+        segments: param('#segments')
+    }));
     picture.innerHTML = '';
     picture.appendChild(nsvg);
     fit(nsvg);
     compute();
+    generating = false;
+    if (doOver) generateImage();
 }
 
 function compute () {
@@ -57,8 +70,10 @@ function compute () {
         vup: param('#vup'),
         vdown: param('#vdown')
     });
-    
-    function param (sel) { return Number(document.querySelector(sel).value) }
+}
+ 
+function param (sel) {
+    return Number(document.querySelector(sel).value);
 }
 
 var params = [

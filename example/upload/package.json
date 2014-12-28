@@ -2,5 +2,12 @@
   "scripts": {
     "watch": "watchify browser.js -o static/bundle.js -dv",
     "build": "browserify browser.js | uglifyjs > static/bundle.js"
+  },
+  "dependencies": {
+    "element": "^0.1.4",
+    "svg-create-element": "^1.0.0",
+    "svg-line-segments": "^1.0.0",
+    "svg-linearize": "^1.0.0",
+    "upload-element": "^1.0.1"
   }
 }
