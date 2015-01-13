@@ -54,8 +54,8 @@ module.exports = function (points, opts) {
     
     function shift (x, y) {
         return [
-            xmax - (x - pxmin) / (pxmax - pxmin) * (xmax - xmin),
-            ymax - (pymax - y) / (pymax - pymin) * (ymax - ymin)
+            xmax - (y - pymin) / (pymax - pymin) * (xmax - xmin),
+            ymax - (x - pxmin) / (pxmax - pxmin) * (ymax - ymin)
         ];
     }
     var commands = pos.map(function (p) {

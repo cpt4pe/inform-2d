@@ -9,6 +9,5 @@ var src = inform(points, {
     xmin: 900, xmax: 1200,
     ymin: -650, ymax: -350,
     zup: 150.4, zdown: 140.4
-
 });
 console.log(src);
