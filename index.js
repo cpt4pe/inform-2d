@@ -40,6 +40,7 @@ module.exports = function (points, opts) {
                 id: sprintf('C%03d', pos.length),
                 x: p[j][0], y: p[j][1], z: zdown
             });
+            
             pxmax = Math.max(pxmax, p[j][0]);
             pxmin = Math.min(pxmin, p[j][0]);
             pymax = Math.max(pymax, p[j][1]);
@@ -53,8 +54,8 @@ module.exports = function (points, opts) {
     
     function shift (x, y) {
         return [
-            x * (pxmax - pxmin) / (xmax - xmin) + xmin,
-            y * (pymax - pymin) / (ymax - ymin) + ymin
+            xmax - (pxmax - x) / (pxmax - pxmin) * (xmax - xmin),
+            ymax - (pymax - y) / (pymax - pymin) * (ymax - ymin)
         ];
     }
     var commands = pos.map(function (p) {
