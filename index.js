@@ -54,7 +54,7 @@ module.exports = function (points, opts) {
     
     function shift (x, y) {
         return [
-            xmax - (pxmax - x) / (pxmax - pxmin) * (xmax - xmin),
+            xmax - (x - pxmin) / (pxmax - pxmin) * (xmax - xmin),
             ymax - (pymax - y) / (pymax - pymin) * (ymax - ymin)
         ];
     }
